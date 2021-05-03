@@ -20,5 +20,11 @@
     <orderEntry type="library" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.containers:jersey-container-jdk-http:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jersey.inject:jersey-hk2:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-locator:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:aopalliance-repackaged:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-api:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-utils:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.25.0-GA" level="project" />
   </component>
 </module>
