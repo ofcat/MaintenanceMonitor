@@ -1,8 +1,0 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-
-.### Maven ###
-target/
-.mvn/wrapper/maven-wrapper.jar
-.flattened-pom.xml
