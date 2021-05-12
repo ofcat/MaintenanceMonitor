@@ -1,5 +1,7 @@
 .idea/
 .gradle/
+MaintenanceMonitor.iml
+.attach_pid*
 
 .### Maven ###
 target/
