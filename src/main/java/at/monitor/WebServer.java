@@ -17,7 +17,6 @@ public class WebServer {
     {
         try {
             var path = Paths.get("src/main/resources/MaintenanceMonitor.html");
-            System.out.println(path.toAbsolutePath());
             return Files.readString(path);
         } catch (IOException e) {
             e.printStackTrace();

@@ -24,7 +24,7 @@ public class MaintenanceMonitorController {
 
     @GET()
     @Path("/get")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.TEXT_PLAIN)
     public String getMessage() {
         return message;
     }

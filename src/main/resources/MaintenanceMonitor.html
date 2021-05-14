@@ -45,7 +45,6 @@
             // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
             fetch('http://localhost:8080/get').then(response => {
                 response.text().then(text => {
-                    console.log(text);
                     // https://cssgradient.io/
                     if (text == "-") {
                         messageControl.innerText = "";
