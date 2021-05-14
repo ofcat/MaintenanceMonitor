@@ -1,3 +1,5 @@
+import at.monitor.MaintenanceMonitorController;
+import at.monitor.WebServer;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -8,7 +10,7 @@ public class Server {
     public static void main(final String... args) {
         System.out.println("Starting http server");
 
-        final var resourceConfig = new ResourceConfig().packages("at.monitor");
+        final var resourceConfig = new ResourceConfig(MaintenanceMonitorController.class, WebServer.class);
         final var server = JdkHttpServerFactory.createHttpServer(URI.create("http://localhost:8080/"), resourceConfig);
 
         System.out.println("Server started");

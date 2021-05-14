@@ -1,31 +1,31 @@
 package at.monitor;
 
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
-@Path("/api")
+@Path("")
 public class MaintenanceMonitorController {
-    private static String message = "red";
+    private static String message = "-";
 
     @GET()
     @Path("/reset")
-    public String resetMessage() {
-        message = "red";
-        System.out.println("reset: " + message);
-        return "message reset";
+    public Response resetMessage() {
+        message = "-";
+        return Response.ok().entity("Message reset").build();
     }
 
     @GET()
     @Path("/set/{newMessage}")
-    public String setMessage(@PathParam("newMessage") final String newMessage) {
+    public Response setMessage(@PathParam("newMessage") final String newMessage) {
         message = newMessage;
-        System.out.println("set: " + message);
-        return message;
+        return Response.ok().entity("New message: " + message).build();
     }
 
     @GET()
     @Path("/get")
+    @Produces(MediaType.TEXT_PLAIN)
     public String getMessage() {
-        System.out.println("get: " + message);
         return message;
     }
 }
