@@ -2,92 +2,30 @@ package at.monitor;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("")
 public class MaintenanceMonitorController {
-    private static char message = ' ';
+    private static String message = "-";
 
     @GET()
     @Path("/reset")
-    public String resetMessage() {
-        message = 'r';
-        return "Message reset";
+    public Response resetMessage() {
+        message = "-";
+        return Response.ok().entity("Message reset").build();
     }
 
     @GET()
     @Path("/set/{newMessage}")
-    public String setMessage(@PathParam("newMessage") final char newMessage) {
+    public Response setMessage(@PathParam("newMessage") final String newMessage) {
         message = newMessage;
-        return callStatus(message);
+        return Response.ok().entity("New message: " + message).build();
     }
 
     @GET()
     @Path("/get")
+    @Produces(MediaType.TEXT_HTML)
     public String getMessage() {
-
-        return callStatus(message);
+        return message;
     }
-
-    @GET
-    //@Path("/status")
-    @Produces({MediaType.TEXT_HTML})
-    public String callStatus(char message) {
-
-        if (message == '-')
-            return greenStatus();
-        else
-            return redStatus();
-    }
-
-
-    public String greenStatus() {
-
-        return """
-                <html>
-
-                <head>
-                <style>
-                h1 {text-align: center;}
-                p {text-align: center;}
-
-                </style>
-                    <meta charset="UTF-8">
-                    <title>Maintenance Monitor</title>
-                </head>
-
-                <body style="background-color:green;">
-                <br><br><br><br><br><br><br><br><br><br><br>
-                    <h1>Maintenance Monitor</h1>
-                    <p>status: ok</p>
-                </body>
-
-                </html>""";
-
-    }
-
-
-    public String redStatus() {
-
-        return """
-                <html>
-
-                <head>
-                <style>
-                h1 {text-align: center;}
-                p {text-align: center;}
-                </style>
-                    <meta charset="UTF-8">
-                    <title>Maintenance Monitor</title>
-                </head>
-
-                <body style="background-color:red;">
-                <br><br><br><br><br><br><br><br><br><br><br>
-                    <h1>Maintenance Monitor</h1>
-                    <p>status: error occurred</p>
-                </body>
-
-                </html>""";
-    }
-
-
 }
