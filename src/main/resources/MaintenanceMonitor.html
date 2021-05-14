@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0098)https://moodle.technikum-wien.at/pluginfile.php/892075/mod_resource/content/0/MaintenanceMode.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Maintenance Monitor</title>
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./Maintenance Monitor_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        html { height:100% }
+        body { height:100% }
+        .container-fluid {height:100%}
+        .container-fluid > * {width: 100%;}
+        #updated { font-size: xx-small; }
+    </style>
+</head>
+
+<body style="">
+    <div id="container" class="container-fluid d-flex" style="background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(245, 9, 9, 0.5) 50%, rgb(255, 255, 255) 100%);">
+        <div class="d-flex align-items-center justify-content-center">
+            <div id="mainContent">
+                <h1> Maintenance Monitor </h1>
+                <p id="message" class="text-center">error occured</p>
+                <p id="updated" class="text-center">last update: 7:36:45 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./Maintenance Monitor_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="./Maintenance Monitor_files/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./Maintenance Monitor_files/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        var containerControl = document.getElementById('container');
+        var messageControl = document.getElementById('message');
+        var updateControl = document.getElementById('updated');
+
+        function checkState() {
+            // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
+            // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+            fetch('http://localhost:8080/get').then(response => {
+                response.text().then(text => {
+                    console.log(text);
+                    // https://cssgradient.io/
+                    if (text == "-") {
+                        messageControl.innerText = "";
+                        containerControl.style.background = 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(  9,245, 68, 0.5) 50%, rgba(255,255,255,1) 100%)';
+                    } else {
+                        messageControl.innerText = text;
+                        containerControl.style.background = 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(245,  9,  9, 0.5) 50%, rgba(255,255,255,1) 100%)';
+                    }
+
+                });
+                updateControl.innerText = 'last update: ' + (new Date()).toLocaleTimeString()
+            }).catch((reason)=> {
+                messageControl.innerText = "error occured";
+                containerControl.style.background = 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(245,  9,  9, 0.5) 50%, rgba(255,255,255,1) 100%)';
+                updateControl.innerText = 'last update: ' + (new Date()).toLocaleTimeString()
+            });
+        };
+
+        checkState();
+        setInterval(checkState, 5000);
+    </script>
+
+
+
+</body></html>
