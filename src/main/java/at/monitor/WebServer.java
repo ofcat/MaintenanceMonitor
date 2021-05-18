@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+// taken from E-Mail: CORS-Probleme
+
 @Path( "/" )
 public class WebServer {
     @GET
