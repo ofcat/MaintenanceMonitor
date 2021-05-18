@@ -11,6 +11,9 @@ public class Server {
         System.out.println("Starting http server");
 
         final var resourceConfig = new ResourceConfig(MaintenanceMonitorController.class, WebServer.class);
+
+        // taken from https://raw.githubusercontent.com/kienboec/SWLCM-Samples/main/src/main/java/Main.java
+
         final var server = JdkHttpServerFactory.createHttpServer(URI.create("http://localhost:8080/"), resourceConfig);
 
         System.out.println("Server started");

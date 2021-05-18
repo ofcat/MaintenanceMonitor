@@ -29,6 +29,7 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      # taken from https://youtu.be/F8c4Eu0XlRs
     - name: copy to staging
       run: mkdir staging && cp target/*.jar staging
     - name: upload
