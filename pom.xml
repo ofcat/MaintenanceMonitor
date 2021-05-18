@@ -14,6 +14,7 @@
     </properties>
 
     <dependencies>
+        <!-- taken from https://github.com/kienboec/SWLCM-Samples/edit/main/pom.xml -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
@@ -52,6 +53,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
             </plugin>
+            <!-- taken from https://youtu.be/F8c4Eu0XlRs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
